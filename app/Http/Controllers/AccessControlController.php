@@ -287,7 +287,7 @@ INNER JOIN employee_data ON attendance.card_number=employee_data.card_number";
                WHERE en.status in (0,1)"));
 
 
-        
+
         return view('employee.index',['pageTitle'=>$pageTitle,'model'=>$model]);
 
     }
