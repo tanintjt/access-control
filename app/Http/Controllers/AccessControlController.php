@@ -285,9 +285,7 @@ INNER JOIN employee_data ON attendance.card_number=employee_data.card_number";
                join company_list on en.`company`=company_list.co_id
                join dept on en.`card_dept`=dept.dept_id
                WHERE en.status in (0,1)"));
-
-
-
+        
         return view('employee.index',['pageTitle'=>$pageTitle,'model'=>$model]);
 
     }
