@@ -54,7 +54,11 @@ class EmployeeData extends Model implements AuthenticatableContract,
         return  $this->belongsTo('App\Department','card_dept','dept_id');
     }
 
+    public static function getEmployeeName(){
 
+        $data = [''=>'No Line Manager'] + EmployeeData::lists('card_name','default_id')->all();
+        return $data;
+    }
 
    /* public function relCompany()
     {

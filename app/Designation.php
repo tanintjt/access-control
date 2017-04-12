@@ -15,4 +15,9 @@ class Designation extends Model
         'deg_name','deg_des','co_id'
 
     ];
+
+    public static function getDegName(){
+        $data = Designation::lists('deg_name','deg_id');
+        return $data;
+    }
 }

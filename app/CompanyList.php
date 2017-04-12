@@ -14,4 +14,10 @@ class CompanyList extends Model
     protected $fillable = [
         'com_name','com_location','com_logo','com_soft'
     ];
+
+    public static function getCompanyName(){
+
+        $data = CompanyList::lists('com_name','co_id');
+        return $data;
+    }
 }

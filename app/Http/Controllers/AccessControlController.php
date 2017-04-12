@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\CompanyList;
 use App\Department;
 use App\Designation;
 use App\EmployeeData;
@@ -273,7 +274,7 @@ INNER JOIN employee_data ON attendance.card_number=employee_data.card_number";
         $model = DB::select(DB::raw("SELECT  en.`card_number`,en.`card_name` As employee_name,en.`card_name` As line_manager,en.join_date,en.duty_station,en.status,company_list.com_name,dept.dept_name
                FROM `employee_data` as en 
                join company_list on en.`company`=company_list.co_id
-               left join dept on en.`card_dept`=dept.dept_id
+               join dept on en.`card_dept`=dept.dept_id
                where  en.`line_manager`='0'
                
                UNION
@@ -285,9 +286,27 @@ INNER JOIN employee_data ON attendance.card_number=employee_data.card_number";
                join company_list on en.`company`=company_list.co_id
                join dept on en.`card_dept`=dept.dept_id
                WHERE en.status in (0,1)"));
-        
-        return view('employee.index',['pageTitle'=>$pageTitle,'model'=>$model]);
 
+
+        /*get company_list....*/
+        $company_list = CompanyList::getCompanyName();
+
+        /*get department_list....*/
+        $dept_list = Department::getDeptName();
+
+        /*get designation_list....*/
+        $deg_list = Designation::getDegName();
+
+        /*get employee_list....*/
+        $employee_list = EmployeeData::getEmployeeName();
+        //print_r($company_list);exit;
+
+        return view('employee.index',['pageTitle'=>$pageTitle,
+                                      'model'=>$model,
+                                      'company_list'=>$company_list,
+                                      'deg_list'=>$deg_list,
+                                      'dept_list'=>$dept_list,
+                                      'employee_list'=>$employee_list,
+                                       ]);
     }
-
 }

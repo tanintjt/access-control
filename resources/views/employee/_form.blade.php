@@ -39,21 +39,61 @@
 
     <div class="row">
         <div class="col-sm-12">
-            {!! Form::label('type', 'Type:', ['class' => 'control-label']) !!}
-            {!! Form::select('type', array(''=>'Select One','1'=>'No Repeat','0'=>'Repeat'),Input::old('type'),['class' => 'form-control','required','title'=>'select type']) !!}
+            {!! Form::label('card_name', 'Employee Name:', ['class' => 'control-label']) !!}
+            {!! Form::text('card_name',Input::old('card_name'),['class' => 'form-control','placeholder'=>'Employee Name','required','autofocus', 'title'=>'Enter Employee Name']) !!}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            {!! Form::label('company', 'Company:', ['class' => 'control-label']) !!}
+            {!! Form::select('company', $company_list,Input::old('company'),['class' => 'form-control','required','title'=>'select company name']) !!}
+        </div>
+
+        <div class="col-sm-6">
+            {!! Form::label('dept_name', 'Department:', ['class' => 'control-label']) !!}
+            {!! Form::select('dept_name', $dept_list,Input::old('dept_name'),['class' => 'form-control','required','title'=>'select department name']) !!}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            {!! Form::label('desig', 'Designation:', ['class' => 'control-label']) !!}
+            {!! Form::select('desig', $deg_list,Input::old('desig'),['class' => 'form-control','required','title'=>'select designation name']) !!}
+        </div>
+        <div class="col-sm-6">
+            {!! Form::label('duty_station', 'Duty Station:', ['class' => 'control-label']) !!}
+            {!! Form::select('duty_station', array('0'=>'Mohakhali','1'=>'Dhanmondi'),Input::old('duty_station'),['class' => 'form-control','required','title'=>'Select Duty Station']) !!}
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
-            {!! Form::label('start_date', 'Start Date:', ['class' => 'control-label']) !!}
-            {!! Form::text('start_date',@Input::get('start_date')? Input::get('start_date') : null,['id'=>"date", 'name'=>"start_date",'class'=>'form-control','placeholder'=>'start date', 'title'=>'pick a date ','required'=> 'required']) !!}
+        <div class="col-sm-12">
+            {!! Form::label('email', 'Email Address:', ['class' => 'control-label']) !!}
+            {!! Form::text('email',Input::old('email'),['class' => 'form-control','placeholder'=>'Employee Email Address','required','autofocus', 'title'=>'Enter Employee Email Address']) !!}
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-sm-6">
-            {!! Form::label('end_date', 'End Date:', ['class' => 'control-label']) !!}
-            {!! Form::text('end_date',@Input::get('end_date')? Input::get('end_date') : null,['id'=>"date", 'name'=>"end_date",'class'=>'form-control','placeholder'=>'end date', 'title'=>'pick a date ','required'=> 'required']) !!}
+            {!! Form::label('line_manager', 'Line Manager:', ['class' => 'control-label']) !!}
+            {!! Form::select('line_manager', $employee_list,Input::old('line_manager'),['class' => 'form-control','required','title'=>'select line manager name']) !!}
         </div>
+        <div class="col-sm-6">
+            {!! Form::label('user_access', 'User Access:', ['class' => 'control-label']) !!}
+            {!! Form::select('user_access', array(''=>'Select One','0'=>'HR HEAD','1'=>'Manager','2'=>'HR','3'=>'Employee'),Input::old('user_access'),['class' => 'form-control','required','title'=>'']) !!}
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-sm-6">
+             {!! Form::label('join_date', 'Joining Date:', ['class' => 'control-label']) !!}
+             {!! Form::text('join_date',@Input::get('join_date')? Input::get('join_date') : null,['id'=>"date", 'name'=>"join_date",'class'=>'form-control','placeholder'=>'join date', 'title'=>'pick a date ','required'=> 'required']) !!}
+        </div>
+        <div class="col-sm-6">
+            {!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}
+            {!! Form::password('password',['name'=>"password",'class'=>'form-control','placeholder'=>'password','required'=> 'required']) !!}
+
+        </div>
     </div>
 </div>
 
