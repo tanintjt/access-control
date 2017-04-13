@@ -309,4 +309,48 @@ INNER JOIN employee_data ON attendance.card_number=employee_data.card_number";
                                       'employee_list'=>$employee_list,
                                        ]);
     }
+
+
+    public function employee_store(Requests\EmployeeRequest $request){
+
+        $input = $request->all();
+        //print_r($input);exit;
+
+        $model = new EmployeeData();
+
+        $model_data = [
+            'id_card'=>$input['id_card'],
+            'card_number'=>$input['card_number'],
+            'card_name'=>$input['card_name'],
+            'company'=>$input['company'],
+            'card_dept'=>$input['card_dept'],
+            'desig'=>$input['desig'],
+            'duty_station'=>$input['duty_station'],
+            'email'=>$input['email'],
+            'line_manager'=>$input['line_manager'],
+            'user_access'=>$input['user_access'],
+            'join_date'=>$input['join_date'],
+            'password'=>$input['password'],
+//            'status'=>$input['status'],
+//            'employee_type'=>$input['employee_type'],
+        ];
+
+        //print_r($input_data);exit;
+
+        /* Transaction Start Here */
+        DB::beginTransaction();
+        try {
+
+            EmployeeData::create($model_data);
+            DB::commit();
+            Session::flash('message', 'Successfully Added!!!!');
+
+        }catch (\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
+            Session::flash('error',$e->getMessage());
+        }
+
+        return redirect()->back();
+    }
 }

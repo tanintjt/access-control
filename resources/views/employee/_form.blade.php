@@ -20,6 +20,20 @@
     <div class="alert alert-danger">{{Session::get("danger")}}</div>
 @endif
 
+{{--set some message after action--}}
+@if (Session::has('message'))
+    <div class="alert alert-success">{{Session::get("message")}}</div>
+
+@elseif(Session::has('error'))
+    <div class="alert alert-warning">{{Session::get("error")}}</div>
+
+@elseif(Session::has('info'))
+    <div class="alert alert-info">{{Session::get("info")}}</div>
+
+@elseif(Session::has('danger'))
+    <div class="alert alert-danger">{{Session::get("danger")}}</div>
+@endif
+
 
 <script src="assets/bitd/js/jquery.min.js"></script>
 
@@ -51,8 +65,8 @@
         </div>
 
         <div class="col-sm-6">
-            {!! Form::label('dept_name', 'Department:', ['class' => 'control-label']) !!}
-            {!! Form::select('dept_name', $dept_list,Input::old('dept_name'),['class' => 'form-control','required','title'=>'select department name']) !!}
+            {!! Form::label('card_dept', 'Department:', ['class' => 'control-label']) !!}
+            {!! Form::select('card_dept', $dept_list,Input::old('card_dept'),['class' => 'form-control','required','title'=>'select department name']) !!}
         </div>
     </div>
 
@@ -76,7 +90,7 @@
     <div class="row">
         <div class="col-sm-6">
             {!! Form::label('line_manager', 'Line Manager:', ['class' => 'control-label']) !!}
-            {!! Form::select('line_manager', $employee_list,Input::old('line_manager'),['class' => 'form-control','required','title'=>'select line manager name']) !!}
+            {!! Form::select('line_manager',$employee_list,Input::old('line_manager'),['class' => 'form-control','title'=>'select line manager name']) !!}
         </div>
         <div class="col-sm-6">
             {!! Form::label('user_access', 'User Access:', ['class' => 'control-label']) !!}

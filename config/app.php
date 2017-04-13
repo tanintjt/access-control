@@ -202,8 +202,8 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
 //        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Xmlapi'    => App\Helpers\Xmlapi::class,
-        'EmailSend'    => App\Helpers\EmailSend::class,
+//        'Xmlapi'    => App\Helpers\Xmlapi::class,
+//        'EmailSend'    => App\Helpers\EmailSend::class,
 
     ],
 

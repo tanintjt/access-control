@@ -21,6 +21,8 @@ class EmployeeData extends Model implements AuthenticatableContract,
     protected $table = 'employee_data';
 
 
+    public $timestamps = false;
+
 
     protected $fillable = [
         'card_number',
